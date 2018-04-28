@@ -1,23 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 
+
+
     <% @categories.each do |category| %>
-    <Div class="category_container">
+    <div class="category_container">
     <div class="category_header">
+
        <div><i class="fab fa-firefox"></i><%= category.icon_id %> <%= category.name %></div>
 
 
-       <div class="dropdown">
+       <div class="options_container">
 
-          <%= link_to "Options", "javascript:myFunction()", class: "dropbtn"%>
+         <div class="btn-group dropup">
+           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Options
+           </button>
+           <div class="dropdown-menu">
+             <%= link_to 'Edit', edit_category_path(category) %>
+             <br>
+             <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+           </div>
+         </div>
 
 
-          <div id="myDropdown" class="dropdown-content">
-                <%= link_to 'Edit', edit_category_path(category) %>
-                <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-       </div>
-
+        </div>
     </div>
 
 
@@ -26,7 +33,7 @@
       <% category.links.each do |link| %>
 
           <%= link_to 'NAME', "http://#{link.link_url}", class: "navitem", target: "_blank"%>
-          
+
 
       <% end %>
 

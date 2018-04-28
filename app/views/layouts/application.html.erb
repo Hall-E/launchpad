@@ -4,15 +4,15 @@
     <title>Launchpad</title>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="Stylesheet.scss">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
     <link rel="icon" href="https://use.fontawesome.com/releases/v5.0.10/svgs/solid/rocket.svg">
-    <title>LaunchPad</title>
+
+    <title><LaunchPad</a></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <i class="fas fa-rocket"></i> Launch Pad
+  <%= fa_icon "rocket" %> <%= link_to "Launch Pad", root_path %>
   </header>
 
   <body>

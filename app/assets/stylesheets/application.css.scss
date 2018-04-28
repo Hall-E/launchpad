@@ -10,9 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
  */
+ @import "font-awesome";
+ @import "categories.scss";
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
 $headercolor: #4c4c4c;
 
@@ -215,3 +218,28 @@ $headercolor: #4c4c4c;
  .panel-heading{
    background-color: red;
  }
+
+
+
+
+/* Bootstrap overrides */
+
+.btn{
+border-radius: 0;
+border: 0
+
+}
+.btn-primary{
+background-color: #494949;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background-color: #cccccc !important;
+    color:black !important;
+}
+
+.dropdown-menu{
+  border-radius: 0;
+  border: 0;
+  padding:10px;
+}

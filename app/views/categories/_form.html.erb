@@ -11,22 +11,49 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :category_name %>
+
+
+
+
+
+
+
+
+
+  <div class="category_container">
+  <div class="category_header">
+
+     <div><i class="fab fa-firefox"></i>
+        <%= form.select :icon_id, id: :category_icon_id %>
+
+         <%= form.text_field :name, id: :category_name, class: "category_field" %>
+       </div>
+
+
+     <div class="options_container">
+
+
+
+
+      </div>
   </div>
 
-  <div class="field">
-    <%= form.label :icon_id %>
-    <%= form.text_field :icon_id, id: :category_icon_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :category_user_id %>
-  </div>
+  <Div class="access_container" style="height: 200px;">
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+    </div>
+    </div>
+
+<br>
+    <div class="actions">
+      <%= form.submit class: "btn, btn-primary" %>
+    </div>
+
+
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.text_field :user_id, id: :category_user_id %>
+    </div>
+
 <% end %>
