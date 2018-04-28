@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+    <% category.links.each do |link| %>
+
+      <%= link_to 'NAME', "http://#{link.link_url}", class: "navitem", target: "_blank"%>
+
+
+
+
+
+
+
+
+        <%= link_to 'Show', link %>
+        <%= link_to 'Edit', edit_link_path(link) %>
+        <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <% end %>
+
+
+<br>
+
+<%= link_to 'New Link', new_link_path %>

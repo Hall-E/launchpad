@@ -1,0 +1,90 @@
+// Place all the styles related to the Categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$headercolor: #4c4c4c;
+
+.category_container{
+  width:100%;
+  margin:auto;
+  margin-top: 20px;
+}
+
+.category_header{
+  font-size: 20px;
+  font-weight: bold;
+  padding:10px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color:$headercolor;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.access_container{
+  margin:0;
+  padding: 0;
+  display:flex;
+  justify-content: center;
+  text-decoration: none;
+  flex-wrap: wrap;
+  background-color: #7c7c7c;
+
+}
+
+.new_category_wrapper{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new_category{
+  width:100%;
+  margin:auto;
+  font-size: 40px;
+  text-align: center;
+  text-decoration: none !important;
+  background-color:#7c7c7c;
+  color: white;
+  flex-grow: 1;
+  line-height: 1em;
+  padding:0.2em;
+}
+
+/* dropdown button */
+
+.dropdown{
+position: relative;
+display: inline-block;
+}
+
+.dropbtn{
+  border:none;
+  background-color: black;
+  color: white;
+}
+
+.dropbtn:hover{
+  background-color: white;
+  color: black;
+}
+
+
+.dropdown-content{
+  display:none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  z-index: 1;
+  height: 200px;
+}
+
+.show{
+  display: block !important;
+}

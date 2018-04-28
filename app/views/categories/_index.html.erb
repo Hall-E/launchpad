@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+
+    <% @categories.each do |category| %>
+    <Div class="category_container">
+    <div class="category_header">
+       <div><i class="fab fa-firefox"></i><%= category.icon_id %> <%= category.name %></div>
+
+
+       <div class="dropdown">
+
+          <%= link_to "Options", "javascript:myFunction()", class: "dropbtn"%>
+
+
+          <div id="myDropdown" class="dropdown-content">
+                <%= link_to 'Edit', edit_category_path(category) %>
+                <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+       </div>
+
+    </div>
+
+
+    <Div class="access_container">
+
+      <% category.links.each do |link| %>
+
+          <%= link_to 'NAME', "http://#{link.link_url}", class: "navitem", target: "_blank"%>
+          
+
+      <% end %>
+
+    </div>
+    </div>
+    <% end %>
+
+<br>
+<div class="new_category_wrapper">
+<%= link_to '+', new_category_path, class: "new_category" %>
+</div>

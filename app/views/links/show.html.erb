@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link url:</strong>
+  <%= @link.link_url %>
+</p>
+
+<p>
+  <strong>Link style:</strong>
+  <%= @link.link_style %>
+</p>
+
+<p>
+  <strong>Icon:</strong>
+  <%= @link.icon_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @link.category_id %>
+</p>
+
+<%= link_to 'Edit', edit_link_path(@link) %> |
+<%= link_to 'Back', links_path %>
