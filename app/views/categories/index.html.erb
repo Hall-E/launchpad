@@ -1,37 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Categories</h1>
+
 
 
     <% @categories.each do |category| %>
-    <Div class="Jumbotron_wrap">
-    <div class="jumbotron_header">
-       <div><i class="fab fa-firefox"></i><%= category.icon_id %> <%= category.name %></div>
+    <div class="category_container">
+    <div class="category_header">
+<%= category.icon.inspect %>
+      <div>
+         <i class="<%= category.icon %>" aria-hidden="true" style="color:white;"> <%= category.name %>
+      </div>
+
+
+       <div class="options_container">
+
+         <div class="btn-group dropup">
+           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Options
+           </button>
+           <div class="dropdown-menu">
+             <%= link_to 'Edit', edit_category_path(category) %>
+             <br>
+             <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+           </div>
+         </div>
+
+
+        </div>
     </div>
+
+
     <Div class="access_container">
-      <a class="navitem" href="" target="_blank">
 
-    </a>
-    <a class="navitem" href="" target="_blank" >
+      <% category.links.each do |link| %>
 
-    </a>
-    <a class="navitem" href="" target="_blank">
+          <%= link_to 'NAME', "http://#{link.link_url}", class: "navitem", target: "_blank"%>
 
-    </a>
-    <a class="navitem" href="" target="_blank">
 
-    </a>
+      <% end %>
 
     </div>
     </div>
-
-
-        <%= link_to 'Show', category %>
-        <%= link_to 'Edit', edit_category_path(category) %>
-        <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
-
     <% end %>
 
 <br>
-
-<%= link_to 'New Category', new_category_path %>
+<div class="new_category_wrapper">
+<%= link_to '+', new_category_path, class: "new_category" %>
+</div>

@@ -3,45 +3,30 @@
 
 
 
-    <% @categories.each do |category| %>
-    <div class="category_container">
-    <div class="category_header">
+  <% @categories.each do |category| %>
+    <div class="card text-white bg-primary border-secondary p-3" style="width:100%;">
+      <div class="card-header">
 
-       <div><i class="fab fa-firefox"></i><%= category.icon_id %> <%= category.name %></div>
+          <i class="<%= category.icon.path %>" aria-hidden="true" style="color:white;"></i> <%= category.name %>
 
 
-       <div class="options_container">
-
-         <div class="btn-group dropup">
+          <div class="btn-group dropup">
            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Options
            </button>
-           <div class="dropdown-menu">
-             <%= link_to 'Edit', edit_category_path(category) %>
-             <br>
-             <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
-           </div>
-         </div>
-
+              <div class="dropdown-menu">
+                  <%= link_to 'Edit', edit_category_path(category) %>
+                    <br>
+                  <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
 
         </div>
-    </div>
-
-
-    <Div class="access_container">
-
-      <% category.links.each do |link| %>
-
-          <%= link_to 'NAME', "http://#{link.link_url}", class: "navitem", target: "_blank"%>
-
-
-      <% end %>
-
-    </div>
-    </div>
-    <% end %>
-
+            <div class="card-body bg-success">
+              <% category.links.each do |link| %>
+                <%= link_to link.name, "http://#{link.link_url}", class: "btn btn-primary mx-auto", type:"button", target: "_blank"%>
+              <% end %>
+            </div>
+          </div>
 <br>
-<div class="new_category_wrapper">
-<%= link_to '+', new_category_path, class: "new_category" %>
-</div>
+  <% end %>

@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Link name</th>
       <th>Link url</th>
       <th>Link style</th>
       <th>Icon</th>
@@ -16,18 +17,17 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
-        <td><%= link.link_url %></td>
+
+        <td><%= link.name %></td>
         <td><%= link.link_style %></td>
         <td><%= link.icon_id %></td>
         <td><%= link.category_id %></td>
-        <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', category_link_path(@category, link) %></td>
+        <td><%= link_to 'Edit', edit_category_link_path(@category, link) %></td>
+        <td><%= link_to 'Destroy', category_link_path(@category, link), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Link', new_link_path %>

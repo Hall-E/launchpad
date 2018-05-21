@@ -4,7 +4,8 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @category = Category.find(params[:category_id])
+    @links = @category.links
   end
 
   # GET /links/1
@@ -15,6 +16,7 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
+    @category = Category.find(params[:category_id])
   end
 
   # GET /links/1/edit
@@ -24,11 +26,15 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
+
+
+    @category = Category.find(params[:category_id])
     @link = Link.new(link_params)
+    @link.category_id = params[:category_id]
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
+        format.html { redirect_to edit_category_path(@category), notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
       else
         format.html { render :new }
@@ -54,9 +60,11 @@ class LinksController < ApplicationController
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
+
     @link.destroy
+
     respond_to do |format|
-      format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+      format.html { redirect_to edit_category_path([@link.category]), notice: 'Link was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +77,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:link_url, :link_style, :icon_id, :category_id)
+      params.require(:link).permit(:name, :category_id, :link_url, :link_style, :icon_id)
     end
 end

@@ -1,11 +1,14 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+
+@icons = Icon.all
   # GET /categories
   # GET /categories.json
   def index
     @categories = Category.all
-    @links = Link.all
+    @icons = Icon.all
+
   end
 
   # GET /categories/1
@@ -16,16 +19,25 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+    @icons = Icon.all
+    @icon = Icon.new
+    @link = Link.new(category_id: params[:category_id])
   end
 
   # GET /categories/1/edit
   def edit
-  end
 
+    @icons = Icon.all
+    @icon = Icon.new
+    @link = Link.new( :category => @category)
+end
   # POST /categories
   # POST /categories.json
   def create
     @category = Category.new(category_params)
+    @icons = Icon.all
+    @icon = Icon.new
+
 
     respond_to do |format|
       if @category.save
@@ -57,7 +69,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

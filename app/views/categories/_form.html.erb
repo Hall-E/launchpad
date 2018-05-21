@@ -4,6 +4,8 @@
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
 
       <ul>
+
+
       <% category.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
@@ -14,40 +16,78 @@
 
 
 
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2" style="padding:0;">
+        <div class="card text-white bg-primary mb-3", style="padding:5px;margin:5px;">
+          <div class="card-header">
+            <h4>Icon Library</h4>
+
+          </div>
+          <div class="list-group">
+            <% @icons.each do |icon| %>
+          <div class="list-group-item-active text-white">
+            <i class="<%= icon.path %>" aria-hidden="true" style="color:white;"></i> <%= icon.name %>
+          </div>
+      <% end %>
+      </div>
+    </div>
+      <div style="margin:5px;">
+        <%= link_to '+', new_icon_path, class: "btn btn-primary btn-lg btn-block", type:"button" %>
+      </div>
+    </div>
 
 
 
 
 
 
-  <div class="category_container">
-  <div class="category_header">
-
-     <div><i class="fab fa-firefox"></i>
-        <%= form.select :icon_id, id: :category_icon_id %>
-
-         <%= form.text_field :name, id: :category_name, class: "category_field" %>
-       </div>
+<div class="col-sm-10" style="padding:0;">
+  <div class="card", style="padding:5px;margin:5px;">
+  <div class="card-header bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-1">
 
 
-     <div class="options_container">
+          <i class="<%= category.icon.try(:path)%>" aria-hidden="true" style="color:white;"></i>
 
+        </div>
+      <div class="col-sm-3">
+        <%= form.select :icon_id, options_for_select(@icons.collect { | icon | [icon.name, icon.id] }, @icon.id), {}, {class: "form-control"} %>
+      </div>
+      <div class="col-sm-4">
+        <%= form.text_field :name, id: :category_name, class: "" %>
+      </div>
+    </div>
+   </div>
+ </div>
+     <div class="card-body bg-success row">
+
+     <% category.links.each do |link| %>
+
+     <div class="container col-sm-2" id="parent">
+
+
+       <%= link_to category_link_path(@category, link), method: :delete, data: { confirm: 'Are you sure?' } do%>
+        <button class="btn btn-primary" id="mo_warning"> <div class="parent_hide"><%= link.name %></div><div class="parent_show"> Delete </div> </button>
+       <%end%>
+     </div>
+
+     <% end %>
+     <%= link_to "+", new_category_link_path(category_id: @category.id), class: "btn btn-primary mx-auto", type:"button"%>
 
 
 
       </div>
   </div>
-
-
-  <Div class="access_container" style="height: 200px;">
-
-
+</div>
     </div>
-    </div>
+  </div>
 
-<br>
-    <div class="actions">
-      <%= form.submit class: "btn, btn-primary" %>
+<br><br>
+<div>
+      <%= form.submit 'Submit', class: "btn btn-primary" %>
     </div>
 
 
@@ -57,3 +97,5 @@
     </div>
 
 <% end %>
+</div>
+</div>

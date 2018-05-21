@@ -13,9 +13,27 @@
 
  */
  @import "font-awesome";
- @import "categories.scss";
- @import "bootstrap-sprockets";
- @import "bootstrap";
+
+
+ // Example using 'Cerulean' bootswatch
+
+//Import bootstrap-sprockets
+@import "bootstrap-sprockets";
+
+// Import cerulean variables
+//@import "bootswatch/darkly/variables";
+
+// Then bootstrap itself
+@import "bootstrap";
+
+// Bootstrap body padding for fixed navbar
+body { padding-top: 60px; }
+
+// And finally bootswatch style itself
+//@import "bootswatch/darkly/bootswatch";
+
+// Whatever application styles you have go last
+// @import "base";
 
 $headercolor: #4c4c4c;
 
@@ -36,19 +54,11 @@ $headercolor: #4c4c4c;
  }
 
  Body {
-   background-color: #2d2d2d;
- color:white;
  padding:0;
  margin:0;
  font-family: sans-serif;}
 
 
-
- ::-moz-selection{
-   background: #494949;
-   color: white;
-
- }
 
 .pagewrapper{
   width: 80%;
@@ -57,78 +67,6 @@ $headercolor: #4c4c4c;
 }
 
 
- .navitem {
-   color:white;
-   height: 30px;
-   min-width: 100px;
-   text-align: center;
-   padding:10px;
-   padding-top:15px;
-   padding-left:20px;
-   padding-right:20px;
-   background-color: #494949;
-   text-decoration: none;
-   flex-shrink: 0;
-   flex-grow: 1;
-   margin:10px;
-
-   -webkit-user-select: none;
- -khtml-user-select: none;
- -moz-user-select: none;
- -ms-user-select: none;
- -o-user-select: none;
- user-select: none;
- }
-
- .navitem:hover{
-   color:black;
-   background-color: #cccccc;
- }
-
-
- .ie_link{
-   min-width: 100px;
-   text-decoration: none;
-   flex-shrink: 0;
-   flex-grow: 1;
-   margin:10px;
-   flex-grow: 1;
-   flex-shrink: 0;
-   display:flex;
-   flex-direction: column;
- }
-
- .ie_link_header{
-   color:white;
-   text-align: center;
-   background-color: #494949;
-   text-decoration: none;
-   padding-top: 10px;
-   padding-bottom: 10px;
-   -webkit-user-select: none;
- -khtml-user-select: none;
- -moz-user-select: none;
- -ms-user-select: none;
- -o-user-select: none;
- user-select: none;
- }
-
-   .ie_paste{
-   font-size: 10px;
-   font-family: sans-serif;
-   overflow-x: hidden;
-   overflow-y: hidden;
-   text-align: center;
-   width:100%;
-   background-color: #cccccc;
-   overflow-x:hidden;
-   color: black;
-   border: none;
-   resize: none;
-   padding:5px;
-   box-sizing: border-box;
-   margin:0;
-   }
 
 
 
@@ -178,68 +116,26 @@ $headercolor: #4c4c4c;
    padding:20px;
  }
 
- .procedure{
-   color:white;
-   background-color: white;
-   width:50%;
-   height:396px;
-   margin-left:10%;
-   margin-bottom: 30px;
-   border:none;
- }
-
-
- .procedure_item{
-
-   background-color: black;
-   color: white;
-   text-decoration: none;
-   margin-left: 20px;
-   width: 100%;
- }
-
-
-
- .procedure_wrapper{
-   width:80%;
-   display: flex;
-   flex-wrap: nowrap;
-   background-color: blue;
-   margin: auto;
-
- }
-
- .procedure_Menu{
-   width: 200px;
-   background-color: green;
-   height: 500px;
- }
-
- .panel-heading{
-   background-color: red;
- }
-
 
 
 
 /* Bootstrap overrides */
 
-.btn{
-border-radius: 0;
-border: 0
 
-}
-.btn-primary{
-background-color: #494949;
+.parent_show{
+  display: none;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background-color: #cccccc !important;
-    color:black !important;
+#parent:hover .parent_show{
+  display: inline-block;
 }
 
-.dropdown-menu{
-  border-radius: 0;
-  border: 0;
-  padding:10px;
+#mo_warning:hover{
+  background-color: orange;
+  border-color:orange;
+}
+
+
+#parent:hover .parent_hide{
+  display: none;
 }
