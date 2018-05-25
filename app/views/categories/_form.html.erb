@@ -1,101 +1,76 @@
+
+
 <%= form_with(model: category, local: true) do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
-      <ul>
-
-
+<% if category.errors.any? %>
+<div id="error_explanation">
+   <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+   <ul>
       <% category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2" style="padding:0;">
-        <div class="card text-white bg-primary mb-3", style="padding:5px;margin:5px;">
-          <div class="card-header">
-            <h4>Icon Library</h4>
-
-          </div>
-          <div class="list-group">
-            <% @icons.each do |icon| %>
-          <div class="list-group-item-active text-white">
-            <i class="<%= icon.path %>" aria-hidden="true" style="color:white;"></i> <%= icon.name %>
-          </div>
-      <% end %>
-      </div>
-    </div>
-      <div style="margin:5px;">
-        <%= link_to '+', new_icon_path, class: "btn btn-primary btn-lg btn-block", type:"button" %>
-      </div>
-    </div>
-
-
-
-
-
-
-<div class="col-sm-10" style="padding:0;">
-  <div class="card", style="padding:5px;margin:5px;">
-  <div class="card-header bg-primary">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-1">
-
-
-          <i class="<%= category.icon.try(:path)%>" aria-hidden="true" style="color:white;"></i>
-
-        </div>
-      <div class="col-sm-3">
-        <%= form.select :icon_id, options_for_select(@icons.collect { | icon | [icon.name, icon.id] }, @icon.id), {}, {class: "form-control"} %>
-      </div>
-      <div class="col-sm-4">
-        <%= form.text_field :name, id: :category_name, class: "" %>
-      </div>
-    </div>
-   </div>
- </div>
-     <div class="card-body bg-success row">
-
-     <% category.links.each do |link| %>
-
-     <div class="container col-sm-2" id="parent">
-
-
-       <%= link_to category_link_path(@category, link), method: :delete, data: { confirm: 'Are you sure?' } do%>
-        <button class="btn btn-primary" id="mo_warning"> <div class="parent_hide"><%= link.name %></div><div class="parent_show"> Delete </div> </button>
-       <%end%>
-     </div>
-
-     <% end %>
-     <%= link_to "+", new_category_link_path(category_id: @category.id), class: "btn btn-primary mx-auto", type:"button"%>
-
-
-
-      </div>
-  </div>
+   </ul>
 </div>
-    </div>
-  </div>
+<% end %>
+<div style="margin:auto;width:100%">
+   <div class="row justify-content-between row-eq-height">
+      <div class="col" style="padding:10px;max-height:300px">
+         <div class="card text-white mb-3">
+            <div class="card-header bg-primary">
+               <h4>Icon Library</h4>
+            </div>
+            <div class="list-group bg-secondary" style="max-height:200px;overflow:scroll">
+               <% @icons.each do |icon| %>
+               <div class="list-group-item-active text-white">
+                  <i class="fa fa-<%= icon.name %>" aria-hidden="true" style="color:white;"></i> <%= icon.name %>
+               </div>
+               <% end %>
+            </div>
+            <div class="card-footer">
+               <%= link_to 'Edit Icons', icons_path, class: "btn btn-primary btn-lg btn-block", type:"button" %>
+            </div>
+         </div>
+      </div>
 
-<br><br>
-<div>
-      <%= form.submit 'Submit', class: "btn btn-primary" %>
-    </div>
 
 
-    <div class="field">
-      <%= form.label :user_id %>
-      <%= form.text_field :user_id, id: :category_user_id %>
-    </div>
+      <div class="col" style="margin:0;padding:10px;min-width:250px">
+         <div class="card" style="min-height:300px">
+            <div class="card-header bg-primary row justify-content-center">
+                <div class="col-6" style="padding:0;min-width:150px;">
+                    <div class="d-inline-flex">
+                     <i class="fa fa-<%= category.icon.try(:name)%>" aria-hidden="true" style="color:white;font-size:24px;margin-right:10px;display:inline-block;"></i>
 
+                     <%= form.select :icon_id, options_for_select(@icons.collect { | icon | [icon.name, icon.id] }, @icon.id), {}, {class: "form-control"} %>
+                   </div>
+             </div>
+               <div class="col-6" style="padding:0;min-width:150px;">
+                  <%= form.text_field :name, id: :category_name, class:"form-control"%>
+               </div>
+
+         </div>
+         <div class="card-body bg-secondary row justify-content-center">
+            <% category.links.each do |link| %>
+            <%= link_to category_link_path(@category, link), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-primary col-xs-2", id:"parent",style:"margin:5px;width:150px;" do%>
+            <div class="parent_hide"><%= link.name %></div>
+            <div class="parent_show"> Delete </div>
+            </button>
+            <%end%>
+            <% end %>
+            <%= if !@category.new_record?
+               link_to "New Link", new_category_link_path(category_id: @category.id), class: "btn btn-primary col-xs-2 bg-success border-success", type:"button", style:"margin:5px;width:150px;"
+               end %>
+         </div>
+      </div>
+      <div>
+      </div>
+   </div>
+   <br>
+
+   <%= form.submit 'Submit', class: "btn btn-primary btn-block", style:"margin-top:100px"%>
+</div>
+</div>
+<div class="field"></div>
+<%= form.hidden_field :user_id, id: :category_user_id %>
 <% end %>
 </div>
 </div>

@@ -4,27 +4,34 @@
 
 
   <% @categories.each do |category| %>
-    <div class="card text-white bg-primary border-secondary p-3" style="width:100%;">
-      <div class="card-header">
+    <div class="card" style="width:100%;">
+      <div class="card-header bg-primary row justify-content-between align-items-center" >
+        <div class="col-auto">
+          <i class="fa fa-<%= category.icon.try(:name)%>" aria-hidden="true" style="color:white;"></i> <%= category.name %>
+        </div>
 
-          <i class="<%= category.icon.path %>" aria-hidden="true" style="color:white;"></i> <%= category.name %>
-
-
-          <div class="btn-group dropup">
-           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropup btn-group">
+           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" >
              Options
            </button>
-              <div class="dropdown-menu">
-                  <%= link_to 'Edit', edit_category_path(category) %>
-                    <br>
-                  <%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <div class="dropdown-menu" style="margin:0;padding:0;width:50px">
+
+                  <%= link_to edit_category_path(category), class: "btn-block btn-primary", style:"margin:0;padding:5px;" do %>
+                      <i class="fa fa-cogs"></i>    Options
+                  <% end %>
+
+                  <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn-block btn-primary", style:"margin:0;padding:5px" do %>
+                      <i class="fa fa-trash"></i> Delete
+                  <% end %>
+
               </div>
             </div>
 
+
         </div>
-            <div class="card-body bg-success">
+            <div class="card-body bg-secondary row justify-content-center">
               <% category.links.each do |link| %>
-                <%= link_to link.name, "http://#{link.link_url}", class: "btn btn-primary mx-auto", type:"button", target: "_blank"%>
+                <%= link_to link.name, "http://#{link.link_url}", class: "btn btn-primary col-md-2", type:"button", target: "_blank", style:"margin:5px;min-width:200px;"%>
               <% end %>
             </div>
           </div>

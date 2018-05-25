@@ -1,9 +1,8 @@
 
-<div class="jumbotron", style="padding:15px">
+<p id="notice"><%= notice %></p>
+<div class="jumbotron", style="min-width:260px;margin:0;padding:5px">
 
 <h1>Editing Category</h1>
 
-<%= render 'form', category: @category %>
+<%= render 'form', category: @category%>
 </div>
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>

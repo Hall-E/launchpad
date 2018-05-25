@@ -10,6 +10,8 @@ end
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -21,7 +23,7 @@ gem 'autoprefixer-rails'
 #
 gem "font-awesome-rails"
 #
-gem 'bootstrap-sass', '3.3.6'
+gem 'bootstrap', '~> 4.1.1'
 #
 gem 'jquery-rails'
 
@@ -36,6 +38,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+
+#gem 'bootstrap-select-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
