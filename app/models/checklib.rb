@@ -1,0 +1,2 @@
+class Checklib < ApplicationRecord
+end
