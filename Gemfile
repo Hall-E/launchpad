@@ -39,6 +39,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'simple_calendar'
+gem 'recurring_select', github: "RundownApp/recurring_select"
 
 #gem 'bootstrap-select-rails'
 
