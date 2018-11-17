@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :checklibs
   resources :icons
 
   resources :categories do
