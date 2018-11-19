@@ -41,6 +41,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'simple_calendar'
 gem 'recurring_select', github: "RundownApp/recurring_select"
+gem 'ice_cube', '0.16.2'
 
 #gem 'bootstrap-select-rails'
 
