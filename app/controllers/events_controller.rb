@@ -8,6 +8,12 @@ class EventsController < ApplicationController
     @calendar_events = @events.flat_map{ |e| e.calendar_events(params.fetch(:start_date, Time.zone.now).to_date)}
   end
 
+
+  def daily
+    @events = Event.all
+    @calendar_events = @events.flat_map{ |e| e.calendar_events(params.fetch(:start_date, Time.zone.now).to_date)}
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show

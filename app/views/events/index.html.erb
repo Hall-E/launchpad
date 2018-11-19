@@ -5,6 +5,8 @@
 
 <%= month_calendar events: @calendar_events do|day, events| %>
   <div><strong><%=day.to_s(:long) %> </strong></div>
+
+  <a href="/daily?start_date=<%= day %>">daily </a>
   <% events.each do |event| %>
     <div>
     <%= link_to event.name, event_path(event.id)%>
@@ -12,8 +14,10 @@
     <% end%>
   <% end %>
 
-
-
+<br>
+<%= link_to 'New Event', new_event_path %>
+<br>
+<br>
 
 <table>
   <thead>
@@ -40,5 +44,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Event', new_event_path %>
