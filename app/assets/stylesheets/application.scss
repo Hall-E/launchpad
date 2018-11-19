@@ -48,6 +48,7 @@ $headercolor: #4c4c4c;
 
 
 
+.eventcount {color: white;margin:auto;}
 
  .notepad{
    margin:auto;
@@ -115,9 +116,84 @@ $headercolor: #4c4c4c;
    display: none;
  }
 
+ .snowflake{margin:0;padding:15px;height:100%}
+
+ .snowflake a { text-decoration: none;}
+
+
+ .td div{height:100%;width:100%;overflow:auto;}
+
+#nostyle{text-decoration: none;
+}
+
+#nostyle :hover{text-decoration: none;
+}
 
 /* Bootstrap overrides */
 
 .row{
   margin:0
 }
+
+
+
+/* calendar overrides */
+.simple-calendar {
+  .day {padding:0}
+
+  .day:hover{background-color:grey;cursor: pointer;}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {border:2px lightblue solid;background-color:#264348;}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month{
+      pointer-events: none;
+      user-select: none;
+    a{
+      div{
+        background-color: #0f0f0f;
+        color: #0f0f0f;
+        padding: none;
+        :hover{
+        }
+       }
+     }
+  }
+
+
+
+  .next-month{
+      pointer-events: none;
+      user-select: none;
+    a{
+      div{
+        background-color: #0f0f0f;
+        color: #0f0f0f;
+        padding: none;
+        :hover{
+        }
+       }
+     }
+  }
+
+
+
+
+  .current-month {}
+
+  .has-events {}
+}
+
+td.prev-month{background-color:  #0f0f0f}
+td.next-month{background-color:  #0f0f0f}

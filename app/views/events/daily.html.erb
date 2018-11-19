@@ -5,8 +5,11 @@
 <%= calendar number_of_days: 1, events: @calendar_events do |date, events| %>
   <div><strong><%=date.to_s(:long) %> </strong></div>
   <% events.each do |event| %>
+  <tr>
+    <td>
   <%= link_to event.name, event_path(event.id)%>
-  <%= event.start_time.strftime("%H:%M") %>
+</td><td>
+  <%= event.start_time.strftime("%H:%M") %></td>
   <% end %>
 <% end %>
 
